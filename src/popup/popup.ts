@@ -13,6 +13,11 @@ async function patchSettings(patch: Partial<ExtensionSettings>): Promise<void> {
 }
 
 async function initPopup(): Promise<void> {
+  const versionEl = document.getElementById('ext-version');
+  if (versionEl) {
+    versionEl.textContent = `v${chrome.runtime.getManifest().version}`;
+  }
+
   const settings = await loadSettings();
 
   const bindings: Array<{ id: string; key: keyof ExtensionSettings }> = [

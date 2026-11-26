@@ -34,6 +34,20 @@ jobs:
       - name: Run unit tests
         run: npm test
 
+      - name: Sync manifest version with release tag
+        if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'release'
+        run: |
+          TAG="${{ github.event_name == 'release' && github.event.release.tag_name || github.ref_name }}"
+          VER="${TAG#v}"
+          node -e "
+            const fs = require('fs');
+            for (const f of ['manifest.json', 'package.json']) {
+              const j = JSON.parse(fs.readFileSync(f, 'utf8'));
+              j.version = process.argv[1];
+              fs.writeFileSync(f, JSON.stringify(j, null, 2) + '\n');
+            }
+          " "$VER"
+
       - name: Build extension
         run: npm run build
 

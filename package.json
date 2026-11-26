@@ -1,6 +1,6 @@
 {
   "name": "mapy-transit-mapper",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "description": "Chrome and Edge MV3 extension that maps public transport connections of the selected transit stop on Mapy.com.",

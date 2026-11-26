@@ -60,7 +60,7 @@ export interface ExtensionSettings {
 export const DEFAULT_SETTINGS: ExtensionSettings = {
   enabled: true,
   showNearby: true,
-  curvedLines: true,
+  curvedLines: false,
   travelTimeColors: false,
   maxMinutes: 0,
   showStopLabels: true,

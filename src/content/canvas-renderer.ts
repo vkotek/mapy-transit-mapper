@@ -338,19 +338,27 @@ export class TransitCanvasRenderer {
 
   private traceRoutePath(ctx: CanvasRenderingContext2D, pts: Point2D[], curved: boolean): void {
     ctx.moveTo(pts[0].x, pts[0].y);
-    if (!curved || pts.length === 2) {
+    if (!curved || pts.length <= 2) {
       for (let i = 1; i < pts.length; i++) {
         ctx.lineTo(pts[i].x, pts[i].y);
       }
       return;
     }
-    for (let i = 1; i < pts.length - 1; i++) {
-      const xc = (pts[i].x + pts[i + 1].x) / 2;
-      const yc = (pts[i].y + pts[i + 1].y) / 2;
-      ctx.quadraticCurveTo(pts[i].x, pts[i].y, xc, yc);
+    // Subtle Catmull-Rom -> cubic Bezier spline so the curve passes through every stop
+    const tension = 0.25;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[Math.max(0, i - 1)];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = pts[Math.min(pts.length - 1, i + 2)];
+
+      const cp1x = p1.x + ((p2.x - p0.x) * tension) / 3;
+      const cp1y = p1.y + ((p2.y - p0.y) * tension) / 3;
+      const cp2x = p2.x - ((p3.x - p1.x) * tension) / 3;
+      const cp2y = p2.y - ((p3.y - p1.y) * tension) / 3;
+
+      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
     }
-    const last = pts[pts.length - 1];
-    ctx.lineTo(last.x, last.y);
   }
 
   private drawChevron(
