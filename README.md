@@ -16,24 +16,40 @@ A Chromium Manifest V3 browser extension for **Google Chrome** and **Microsoft E
 
 ## User Guide
 
-### 1. Build & Install (Chrome or Edge)
+### 1. Build the Extension
 
-**Prerequisites:** Node.js 20+ and npm.
+**Prerequisites:** [Node.js](https://nodejs.org/) 20+ and npm.
 
 ```bash
-git clone git@github.com:vkotek/mapy-transit-mapper.git
+git clone https://github.com/vkotek/mapy-transit-mapper.git
 cd mapy-transit-mapper
 npm install
 npm run build
 ```
 
-Load the compiled `dist/` folder as an unpacked extension:
+This generates the ready-to-load extension bundle inside the `dist/` folder.
 
-1. Open `edge://extensions` (Microsoft Edge) or `chrome://extensions` (Google Chrome).
-2. Enable **Developer mode**.
-3. Click **Load unpacked** and select the `dist/` directory inside this repository.
+### 2. Install on Microsoft Edge (Step-by-Step)
 
-### 2. Using the Extension on Mapy.com
+1. Open **Microsoft Edge**.
+2. Type `edge://extensions` into the address bar and press **Enter** (or click the **⋯** menu → **Extensions** → **Manage extensions**).
+3. In the left sidebar (under **Extensions**), toggle **Developer mode** **On**.
+4. New buttons will appear at the top of the page. Click **Load unpacked**.
+5. In the folder picker dialog, browse to your cloned repository and select the **`dist`** folder (not the project root), then click **Select Folder**.
+6. Verify that **Mapy.com Transit Connections Mapper** appears in your extension list and its toggle is switched **On**.
+7. *(Optional)* Pin the extension to your toolbar: click the **Extensions (puzzle piece)** icon next to the address bar, then click the **eye / pin** icon next to **Mapy.com Transit Connections Mapper** so you can quickly open its settings popup.
+8. Open [mapy.com](https://mapy.com) (or refresh an already open Mapy.com tab) and select any public transport stop.
+
+> **Updating later:** After running `git pull` and `npm run build`, go back to `edge://extensions`, click **Reload** on the **Mapy.com Transit Connections Mapper** card, and refresh your Mapy.com tab.
+
+### 3. Install on Google Chrome
+
+1. Open `chrome://extensions` in Google Chrome.
+2. Enable **Developer mode** in the top-right corner.
+3. Click **Load unpacked** and select the generated **`dist`** folder.
+4. Open or refresh [mapy.com](https://mapy.com) and select any public transport stop.
+
+### 4. Using the Extension on Mapy.com
 
 1. **Select any public transport stop** on [mapy.com](https://mapy.com) (URLs with `source=pubt&id=...`, e.g., a bus, tram, metro, or train stop).
 2. A compact floating **Transit HUD** appears in the top-left corner of the map showing the stop name, line count, and resolved stop count (e.g., `3 line(s) • 28/28 stops`).
