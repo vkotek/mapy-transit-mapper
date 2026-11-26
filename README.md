@@ -13,7 +13,7 @@ A Chromium Manifest V3 browser extension for **Google Chrome** and **Microsoft E
 - **Fast & Local Caching:** Reuses Mapy.com’s own FastRPC responses and caches resolved stop coordinates locally in IndexedDB (30-day TTL). No external servers, no API keys, and zero telemetry.
 
 ---
-[mapy-transit-mapper.webm](https://github.com/user-attachments/assets/55f57b2e-6ebc-4443-8b1d-950001bfcf8b)
+https://github.com/user-attachments/assets/98e02183-0dd5-4a8a-9580-ff5f75f7fb45
 
 ---
 
