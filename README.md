@@ -14,6 +14,7 @@ A Chromium Manifest V3 browser extension for **Google Chrome** and **Microsoft E
 
 ---
 [mapy-transit-mapper.webm](https://github.com/user-attachments/assets/55f57b2e-6ebc-4443-8b1d-950001bfcf8b)
+
 ---
 
 ## User Guide
