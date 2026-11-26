@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Mapy.com Transit Connections Mapper",
+  "version": "0.1.0",
+  "description": "Maps public transport lines, downstream stops, and travel times for the currently selected transit stop on Mapy.com.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://mapy.com/*",
+    "https://mapy.cz/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Mapy.com Transit Mapper",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mapy.com/*", "https://mapy.cz/*"],
+      "js": ["content/main-world-bridge.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://mapy.com/*", "https://mapy.cz/*"],
+      "js": ["content/overlay-app.js"],
+      "world": "ISOLATED",
+      "run_at": "document_idle"
+    }
+  ]
+}

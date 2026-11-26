@@ -1,0 +1,23 @@
+{
+  "name": "mapy-transit-mapper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome and Edge MV3 extension that maps public transport connections of the selected transit stop on Mapy.com.",
+  "scripts": {
+    "icons": "node scripts/generate-icons.mjs",
+    "build": "node scripts/generate-icons.mjs && node esbuild.config.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.312",
+    "esbuild": "^0.25.2",
+    "playwright-core": "^1.65.1",
+    "typescript": "^5.8.2",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "fastrpc": "^1.2.0"
+  }
+}

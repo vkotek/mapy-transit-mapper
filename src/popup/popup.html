@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mapy.com Transit Mapper</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <div>
+          <h1>Mapy Transit Mapper</h1>
+          <p class="subtitle">Public transport overlay for Mapy.com</p>
+        </div>
+      </header>
+
+      <section class="group">
+        <label class="row">
+          <span>Enable map overlay</span>
+          <input type="checkbox" id="opt-enabled" />
+        </label>
+        <label class="row">
+          <span>Show nearby platform lines</span>
+          <input type="checkbox" id="opt-nearby" />
+        </label>
+        <label class="row">
+          <span>Smooth curved route lines</span>
+          <input type="checkbox" id="opt-curved" />
+        </label>
+        <label class="row">
+          <span>Color stops by travel time</span>
+          <input type="checkbox" id="opt-travel-time" />
+        </label>
+        <label class="row">
+          <span>Show stop name labels</span>
+          <input type="checkbox" id="opt-labels" />
+        </label>
+      </section>
+
+      <footer class="footer">
+        <button id="btn-clear-cache" class="secondary-btn" type="button">
+          Clear cached stop coordinates
+        </button>
+        <div id="status-msg" class="status" role="status" aria-live="polite"></div>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
